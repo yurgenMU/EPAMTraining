@@ -36,7 +36,7 @@ public class Parser {
 
     private String getText() {
         StringBuilder stringBuilder = new StringBuilder();
-        String text = "HomeTasks/src/main/resources/file1.txt";
+        String text = "HomeTasks/src/main/resources/Java.SE.03.Information handling_task_attachment.txt";
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(text), "UTF-8"
         ))) {
             String sCurrentLine;
