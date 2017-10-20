@@ -1,11 +1,9 @@
 package hometask3.t01;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CrazyLogger {
@@ -30,10 +28,25 @@ public class CrazyLogger {
         }
     }
 
-    public String find(String substr, StringBuilder sb) {
-        Pattern pattern = Pattern.compile(substr);
-//        try (BufferedReader)
-//        String a = stringBuilder.
-        return null;
+    public String findLog(String patternText, String logPath) {
+        Pattern pattern = Pattern.compile(patternText);
+        String[] logText = new String[0];
+        File file;
+        try (FileReader reader = new FileReader(file = new File(logPath))) {
+            char[] buffer = new char[(int) file.length()];
+            reader.read(buffer, 0, (int) file.length());
+            logText = new String(buffer).trim().split("\\r\\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String str : logText) {
+            Matcher m = pattern.matcher(str);
+            StringBuilder foundLog = new StringBuilder();
+            if (m.find()) {
+                foundLog.append(str).append("\r\n");
+                return foundLog.toString();
+            }
+        }
+        return "Not found";
     }
 }
