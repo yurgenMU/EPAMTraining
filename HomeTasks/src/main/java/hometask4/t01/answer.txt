@@ -1,0 +1,7 @@
+ class - 1
+ for - 3
+ new - 2
+ public - 2
+ return - 1
+ static - 2
+ void - 1
