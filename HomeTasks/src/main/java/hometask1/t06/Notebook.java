@@ -13,7 +13,6 @@ public class Notebook {
 
         NotebookEntry[] array = getEntries();
         for (int i = 0; i < array.length; i++) {
-
             if ((array[i] == null)) {
                 array[i] = new NotebookEntry(text);
                 break;
