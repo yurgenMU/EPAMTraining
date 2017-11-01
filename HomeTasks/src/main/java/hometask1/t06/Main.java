@@ -26,9 +26,9 @@ public class Main {
             }
             if (action.equals("2") || action.equals("2.") || action.equals("Show all entries")) {
                 entries = nb.getEntries();
-                for (int i = 0; i < entries.length; i++) {
-                    if (entries[i] != null) {
-                        System.out.println(entries[i].getText());
+                for (NotebookEntry entry : entries) {
+                    if (entry != null) {
+                        System.out.println(entry.getText());
                     }
                 }
                 action = sc.nextLine();
@@ -36,18 +36,20 @@ public class Main {
             if (action.equals("3") || action.equals("3.") || action.equals("Edit entry")) {
                 System.out.println("Choose entry you want to edit");
                 String text = sc.nextLine();
-                nb.addEntry(text);
+                String newText = sc.nextLine();
+                nb.editEntry(text, newText);
                 action = sc.nextLine();
             }
             if (action.equals("4") || action.equals("4.") || action.equals("Delete entry")) {
                 System.out.println("Choose entry you want to remove");
                 String text = sc.nextLine();
-                nb.addEntry(text);
+                nb.removeEntry(text);
                 action = sc.nextLine();
             }
             if (action.equals("5") || action.equals("5.") || action.equals("Exit")) {
-                System.exit(0);
+                return;
             }
+
         }
     }
 

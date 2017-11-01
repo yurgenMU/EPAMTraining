@@ -32,10 +32,9 @@ public class Notebook {
     }
 
     public void editEntry(String text, String newText) {
-        NotebookEntry[] array = getEntries();
-        for (int i = 0; i < array.length; i++) {
-            if ((array[i].getText().equals(text))) {
-                array[i].setText(newText);
+        for (int i = 0; i < entries.length; i++) {
+            if ((entries[i].getText().equals(text))) {
+                entries[i].setText(newText);
             }
             break;
         }
