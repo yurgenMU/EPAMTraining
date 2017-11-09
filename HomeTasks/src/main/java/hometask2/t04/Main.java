@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Comparator<Stationery> nameComparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+        Comparator<Stationery> nameComparator = Comparator.comparing(Stationery::getName);
         Comparator<Stationery> priceComparator = (o1, o2) -> {
             if (o1.getPrice() > o2.getPrice())
                 return 1;
