@@ -1,17 +1,21 @@
 package hometask2.t03;
 
-public class Stationery implements Comparable<Stationery> {
-    private double price;
+public abstract class Stationery implements Comparable<Stationery> {
+    private final double price;
     private Color color;
-    private String name;
+    private final String name;
 
 
-    public Stationery() {
+    public Stationery(double price) {
+        name = this.getClass().getSimpleName();
+        this.price = price;
 
     }
 
-    public Stationery(Color color) {
+    public Stationery(Color color, double price) {
         this.color = color;
+        name = this.getClass().getSimpleName();
+        this.price = price;
     }
 
     @Override
@@ -27,15 +31,6 @@ public class Stationery implements Comparable<Stationery> {
         return color;
     }
 
-    public Stationery setColor(Color color) {
-        this.color = color;
-        return this;
-    }
-
-    public Stationery setPrice(double price) {
-        this.price = price;
-        return this;
-    }
 
     @Override
     public int compareTo(Stationery o) {
@@ -47,7 +42,6 @@ public class Stationery implements Comparable<Stationery> {
     }
 
     public String getName() {
-        name = this.getClass().getSimpleName();
         return name;
     }
 

@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Pencil extends Stationery implements WriterDevice, Erasable {
 
-    public Pencil(Color color) {
-        super(color);
+    public Pencil(Color color, double price) {
+        super(color, price);
     }
 
     @Override

@@ -9,9 +9,9 @@ public class Main {
 
     public static void main(String[] args) {
         Employee employee1 = new Employee("Iosif Stalin");
-        employee1.getStationeryList().add(new Pen(Stationery.Color.BLUE).setPrice(40));
-        employee1.getStationeryList().add(new Pencil(Stationery.Color.PLAIN).setPrice(35));
-        employee1.getStationeryList().add(new Ruler().setColor(Stationery.Color.YELLOW).setPrice(15));
+        employee1.getStationeryList().add(new Pen(Stationery.Color.BLUE, 40));
+        employee1.getStationeryList().add(new Pencil(Stationery.Color.PLAIN, 32));
+        employee1.getStationeryList().add(new Ruler(Stationery.Color.YELLOW, 15, 20));
         System.out.println(employee1.getName() + " " + findAveragePrice(employee1.getStationeryList()));
     }
 

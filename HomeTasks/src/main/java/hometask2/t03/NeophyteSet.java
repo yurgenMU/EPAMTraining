@@ -9,10 +9,10 @@ public class NeophyteSet<T> {
 
     public NeophyteSet() {
         this.stationeryList = new StationeryList<Stationery>();
-        stationeryList.add(new Pencil(Stationery.Color.PLAIN).setPrice(40));
-        stationeryList.add(new Eraser().setPrice(15));
-        stationeryList.add(new Ruler().setLength(30).setColor(Stationery.Color.RED).setPrice(20));
-        stationeryList.add(new Pen(Stationery.Color.BLUE).setPrice(42));
+        stationeryList.add(new Pencil(Stationery.Color.PLAIN, 40));
+        stationeryList.add(new Eraser(15));
+        stationeryList.add(new Ruler(Stationery.Color.RED, 20, 30));
+        stationeryList.add(new Pen(Stationery.Color.BLUE, 42));
     }
 
     @Override

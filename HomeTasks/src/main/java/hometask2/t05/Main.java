@@ -8,9 +8,27 @@ public class Main {
 //        Discipline chemistry = Discipline.CHEMISTRY;
 //        Discipline mathematics = Discipline.MATHEMATICS;
 //        Discipline physics = Discipline.PHYSICS;
-        Group group1 = new Group(Discipline.CHEMISTRY);
-        Group group2 = new Group(Discipline.MATHEMATICS);
-        Group group3 = new Group(Discipline.PHYSICS);
+//        Group group1 = new Group(Discipline.CHEMISTRY);
+//        Group group2 = new Group(Discipline.MATHEMATICS);
+//        Group group3 = new Group(Discipline.PHYSICS);
+        class Mathematics extends Discipline {
+            Mathematics(Double highestScore) {
+                super(highestScore);
+            }
+        }
+        class Chemistry extends Discipline {
+            Chemistry(Double highestScore) {
+                super(highestScore);
+            }
+        }
+        class Physics extends Discipline {
+            Physics(Integer highestScore) {
+                super(highestScore);
+            }
+        }
+        Group group1 = new Group(new Mathematics(5.0));
+        Group group2 = new Group(new Chemistry(5.0));
+        Group group3 = new Group(new Physics(5));
         Random random = new Random();
         Random random2 = new Random();
         Student student1 = new Student("Mata, Juan");

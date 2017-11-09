@@ -6,10 +6,11 @@ import hometask2.t03.WriterDevice;
 import java.util.Arrays;
 
 public class Pen extends Stationery implements WriterDevice {
-    private Color color;
+    private final Color color;
 
-    public Pen(Color color) {
-        super(color);
+    public Pen(Color color, double price) {
+        super(price);
+        this.color = color;
     }
 
 

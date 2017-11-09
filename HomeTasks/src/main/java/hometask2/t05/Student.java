@@ -37,9 +37,8 @@ public class Student implements Comparable<Student> {
     public String toString() {
         StringBuilder sb = new StringBuilder(name);
         sb.append("\n");
-        for (Group g : groupsSet) {
-            sb.append(g.getDiscipline() + ": " + g.getMarks().get(name) + "\n");
-        }
+        for (Group g : groupsSet)
+            sb.append(g.getDiscipline().getClass().getSimpleName() + ": " + g.getMarks().get(name) + "\n");
         return sb.toString();
     }
 }

@@ -1,16 +1,18 @@
 package hometask2.t03;
 
 public class Ruler extends Stationery implements MeterDevice {
-    private int length;
+    private final int length;
+
+    public Ruler(Color color, double price, int length) {
+        super(color, price);
+        this.length = length;
+    }
+
 
     public int getLength() {
         return length;
     }
 
-    public Ruler setLength(int length) {
-        this.length = length;
-        return this;
-    }
 
     @Override
     public double measure(Double pointA, double pointB) {
