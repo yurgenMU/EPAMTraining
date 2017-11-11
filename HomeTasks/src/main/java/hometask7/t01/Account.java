@@ -8,8 +8,9 @@ public class Account {
         this.id = id;
     }
 
-    public void setBalance(double balance) {
+    public Account setBalance(double balance) {
         this.balance = balance;
+        return this;
     }
 
     public int getId() {
