@@ -1,5 +1,6 @@
 package hometask7.t01;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,19 +16,41 @@ public abstract class Bank {
     public Bank(int size) {
         this.accounts = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            accounts.add(new Account(i).setBalance(INITIAL_BALANCE));
+            accounts.add(new Account(i));
 
         }
 
     }
 
-    public synchronized double getTotalBalance() {
-        double sum = 0;
-        for (Account account : accounts)
-            sum += account.getBalance();
-        return sum;
+    public synchronized BigDecimal getTotalBalance() {
+        return accounts.stream().map(Account::getBalance).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public abstract void transfer(Transfer t);
+
+    public class Account {
+        private final int id;
+        private BigDecimal balance = BigDecimal.valueOf(1000);
+
+        public Account(int id) {
+            this.id = id;
+        }
+
+        public void setBalance(BigDecimal balance) {
+            this.balance = balance;
+        }
+
+        public int getId() {
+
+            return id;
+        }
+
+        public BigDecimal getBalance() {
+            return balance;
+        }
+
+
+    }
+
 
 }

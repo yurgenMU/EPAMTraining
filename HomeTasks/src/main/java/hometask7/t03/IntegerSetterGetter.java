@@ -23,7 +23,10 @@ class IntegerSetterGetter extends Thread {
             while (run) {
                 action = rand.nextInt(1000);
                 if (action % 2 == 0) {
-                    getIntegersFromResource();
+                    resource.setGetterCount(resource.getGetterCount() + 1);
+                    if (resource.getGetterCount() > resource.getThreadCount() / 2)
+                        setIntegersIntoResource();
+                    else getIntegersFromResource();
                 } else {
                     setIntegersIntoResource();
                 }
@@ -34,27 +37,28 @@ class IntegerSetterGetter extends Thread {
         }
     }
 
-    private void getIntegersFromResource() throws InterruptedException {
+    private synchronized void getIntegersFromResource() throws InterruptedException {
         Integer number;
+
+        System.out.println("Поток " + getName() + " хочет извлечь число.");
         synchronized (resource) {
-            System.out.println("Поток " + getName() + " хочет извлечь число.");
-            number = resource.getELement();
-            while (number == null) {
+            while (resource.getList().isEmpty()) {
                 System.out.println(" Поток " + getName() + " ждет пока очередь заполнится.");
                 resource.wait();
-                System.out.println("Поток " + getName() + " возобновил работу. ");
-                number = resource.getELement();
             }
+            System.out.println("Поток " + getName() + " возобновил работу. ");
+            number = resource.getElement();
             System.out.println(" Поток " + getName() + " извлек число " + number);
+            resource.notifyAll();
         }
     }
 
-    private void setIntegersIntoResource() throws InterruptedException {
+    private synchronized void setIntegersIntoResource() throws InterruptedException {
         Integer number = rand.nextInt(500);
         synchronized (resource) {
             resource.setElement(number);
             System.out.println("Поток " + getName() + " записал число " + number);
-            resource.notify();
+            resource.notifyAll();
         }
     }
 }

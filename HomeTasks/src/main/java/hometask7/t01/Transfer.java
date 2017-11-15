@@ -1,23 +1,26 @@
 package hometask7.t01;
 
-public class Transfer {
-    private final Account accountFrom;
-    private final Account accountTo;
-    private final double value;
+import java.math.BigDecimal;
 
-    public Account getAccountFrom() {
+public class Transfer {
+    private final int accountFrom;
+    private final int accountTo;
+    private final BigDecimal value;
+
+
+    public int getAccountFrom() {
         return accountFrom;
     }
 
-    public Account getAccountTo() {
+    public int getAccountTo() {
         return accountTo;
     }
 
-    public double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public Transfer(Account accountFrom, Account accountTo, double value) {
+    public Transfer(int accountFrom, int accountTo, BigDecimal value) {
         this.accountFrom = accountFrom;
         this.accountTo = accountTo;
         this.value = value;

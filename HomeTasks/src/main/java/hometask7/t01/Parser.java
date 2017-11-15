@@ -4,8 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import hometask7.t01.Bank.Account;
 
 public class Parser {
     private String path;
@@ -24,9 +27,9 @@ public class Parser {
             String sCurrentLine;
             while ((sCurrentLine = bufferedReader.readLine()) != null) {
                 String[] params = sCurrentLine.split(" ");
-                transfers.add(new Transfer(accounts.get(Integer.parseInt(params[0])),
-                        accounts.get(Integer.parseInt(params[1])),
-                        Double.parseDouble(params[2])));
+                transfers.add(new Transfer(Integer.parseInt(params[0]),
+                        Integer.parseInt(params[1]),
+                        new BigDecimal(params[2])));
             }
         } catch (IOException e) {
             e.printStackTrace();
