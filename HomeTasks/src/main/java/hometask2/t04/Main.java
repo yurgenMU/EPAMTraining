@@ -22,7 +22,7 @@ public class Main {
         Comparator<Stationery> multipleComparator = priceComparator.thenComparing(priceComparator);
         List<Stationery> stationeryList = new ArrayList<>();
         stationeryList.add(new Pencil(Stationery.Color.PLAIN, 40));
-        stationeryList.add(new Eraser(15));
+        stationeryList.add(new Eraser(Stationery.Color.PLAIN, 15));
         stationeryList.add(new Ruler(Stationery.Color.RED, 30, 20));
         stationeryList.add(new Pen(Stationery.Color.BLUE, 42));
         Collections.sort(stationeryList, priceComparator);

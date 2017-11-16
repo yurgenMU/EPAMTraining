@@ -1,6 +1,9 @@
 package hometask3.t03;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -37,17 +40,13 @@ public class Parser {
     private String getText() {
         StringBuilder stringBuilder = new StringBuilder();
         String text = "HomeTasks/src/main/resources/Java.SE.03.Information handling_task_attachment.txt";
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(text), "UTF-8"
-        ))) {
-            String sCurrentLine;
-            while ((sCurrentLine = bufferedReader.readLine()) != null) {
-                stringBuilder.append(sCurrentLine);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        try {
+            Files.readAllLines(Paths.get(text), Charset.forName("UTF-8")).stream()
+                    .forEach(s -> stringBuilder.append(s));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return stringBuilder.toString();
     }
 }

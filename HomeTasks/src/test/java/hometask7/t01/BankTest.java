@@ -11,7 +11,7 @@ public class BankTest {
     @Test
     public void bankTest() {
         Bank synchronizedBank = new SynchronizedBank(10);
-        String path = "C:/Files/Проги/EpamTraining/HomeTasks/src/main/resources/bank/transfersList";
+        String path = "src/main/resources/bank/transfersList";
         TransfersGenerator transfersGenerator = new TransfersGenerator(synchronizedBank, 25, path);
         transfersGenerator.generateTransfers();
         Parser parser = new Parser(synchronizedBank, path);

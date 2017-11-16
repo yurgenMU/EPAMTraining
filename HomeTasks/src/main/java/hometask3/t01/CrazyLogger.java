@@ -29,7 +29,6 @@ public class CrazyLogger {
     }
 
     public String findLog(String patternText, String logPath) {
-        Pattern pattern = Pattern.compile(patternText);
         String[] logText = new String[0];
         File file;
         try (FileReader reader = new FileReader(file = new File(logPath))) {
@@ -39,13 +38,14 @@ public class CrazyLogger {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Pattern pattern = Pattern.compile(patternText);
+        StringBuilder foundLog = new StringBuilder();
         for (String str : logText) {
             Matcher m = pattern.matcher(str);
-            StringBuilder foundLog = new StringBuilder();
             if (m.find()) {
                 foundLog.append(str).append("\r\n");
-                return foundLog.toString();
             }
+            return foundLog.toString();
         }
         return "Not found";
     }

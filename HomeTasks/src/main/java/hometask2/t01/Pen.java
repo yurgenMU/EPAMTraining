@@ -9,7 +9,7 @@ public class Pen extends Stationery implements WriterDevice {
     private final Color color;
 
     public Pen(Color color, double price) {
-        super(price);
+        super(color, price);
         this.color = color;
     }
 

@@ -1,4 +1,7 @@
-package hometask5.t02;
+package hometask6.t02;
+
+import hometask5.t02.NoPropertyFileException;
+import hometask5.t02.NoSuchPropertyKeyException;
 
 import java.io.*;
 import java.util.HashMap;
@@ -10,24 +13,21 @@ public class PropertyWrapper {
     Map<Object, Object> propMap;
 
 
-    public PropertyWrapper(String path) {
+    public PropertyWrapper(String path) throws NoPropertyFileException {
         this.path = path;
         propMap = getProperties();
     }
 
-    public Map<Object, Object> getProperties() {
+    public Map<Object, Object> getProperties() throws NoPropertyFileException {
         Properties properties = new Properties();
         Map<Object, Object> ans = new HashMap<>();
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(path)))) {
             properties.load(bufferedReader);
-            for (Object obj : properties.keySet()) {
-                ans.put(obj, properties.get(obj));
-            }
-        } catch (NoPropertyFileException e) {
-            e.printStackTrace();
+            properties.keySet().stream().forEach(x -> ans.put(x, properties.get(x)));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return ans;
     }
 

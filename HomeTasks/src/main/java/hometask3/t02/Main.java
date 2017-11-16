@@ -1,7 +1,5 @@
 package hometask3.t02;
 
-import javax.print.DocFlavor;
-import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -15,16 +13,16 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Choose language" + "\n" + "English" + "\n" + "Русский");
             String f = scanner.nextLine();
-            if (f.equals("English")) {
+            if (f.equalsIgnoreCase("English")) {
                 System.out.println(getQuestionsList("questions", english));
                 actucalLocale = english;
-            } else if (f.equals("Русский")) {
+            } else if (f.equalsIgnoreCase("Русский")) {
                 System.out.println(getQuestionsList("questions", russian));
                 actucalLocale = russian;
             }
             while (true) {
                 String number = scanner.nextLine();
-                if (number.equals("Exit") || number.equals("Выход"))
+                if (number.equalsIgnoreCase("Exit") || number.equalsIgnoreCase("Выход"))
                     System.exit(0);
                 ResourceBundle resourceBundle = ResourceBundle.getBundle("answers", actucalLocale, new UTF8Control());
                 int bundleSize = resourceBundle.keySet().size() - 1;

@@ -47,11 +47,11 @@ public class FileBrowser {
         if (file.delete()) {
             System.out.println(file.getName() + " is deleted!");
         } else {
-            System.out.println("Delete operation is failed.");
+            throw new RemovalException();
         }
     }
 
-    public String readFromFile(String name) {
+    public String readFromFile(String name) throws RuntimeException {
         String path = actualDirectory + "/" + name;
         StringBuilder sb = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(path)))) {
@@ -59,8 +59,6 @@ public class FileBrowser {
             while ((sCurrentLine = bufferedReader.readLine()) != null) {
                 sb.append(sCurrentLine).append("\n");
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

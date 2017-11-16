@@ -7,7 +7,7 @@ public class Service implements Serializable {
     private Map<Film, Set<Actor>> films;
 
     public Service() {
-        films = new TreeMap<>();
+        films = new HashMap<>();
 
     }
 

@@ -13,38 +13,36 @@ public class Main {
                 String s = scanner.nextLine();
                 String path;
 
-                if (s.substring(0, 2).equals("ls") && (s.length() != 2)) {
+                if (s.substring(0, 2).equalsIgnoreCase("ls") && (s.length() != 2)) {
                     path = s.split(" ", 2)[1];
                     fileBrowser.search(path);
-                }
-                if (s.equals("ls")) {
+                } else if (s.equals("ls")) {
                     fileBrowser.search(fileBrowser.getActualDirectory());
                     continue;
-                }
-                if (s.substring(0, 2).equals("cd")) {
+                } else if (s.substring(0, 2).equalsIgnoreCase("cd")) {
                     path = s.split(" ", 2)[1];
                     fileBrowser.changeDirectory(path);
-                }
-                if (s.substring(0, 5).equals("mkdir")) {
+                } else if (s.substring(0, 5).equalsIgnoreCase("mkdir")) {
                     String name = s.split(" ", 2)[1];
                     fileBrowser.createFile(name);
-                }
-                if (s.substring(0, 4).equals("read")) {
+                } else if (s.substring(0, 4).equalsIgnoreCase("get")) {
                     String name = s.split(" ", 2)[1];
                     fileBrowser.readFromFile(name);
-                }
-                if (s.substring(0, 5).equals("write")) {
+                } else if (s.substring(0, 5).equalsIgnoreCase("write")) {
                     String name = s.split(" ")[1];
                     String text = s.split(" ")[2];
                     System.out.println(text);
                     fileBrowser.writeIntoFile(name, text);
-                }
-                if (s.substring(0, 7).equals("remove")) {
+                } else if (s.substring(0, 7).equals("remove")) {
                     String name = s.split(" ", 2)[1];
-                    fileBrowser.removeFile(name);
+                    try {
+                        fileBrowser.removeFile(name);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        } catch (UnknownCommandException e) {
+        } catch (NoSuchDirectoryException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

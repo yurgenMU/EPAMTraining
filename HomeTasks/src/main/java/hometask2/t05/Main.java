@@ -5,12 +5,6 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-//        Discipline chemistry = Discipline.CHEMISTRY;
-//        Discipline mathematics = Discipline.MATHEMATICS;
-//        Discipline physics = Discipline.PHYSICS;
-//        Group group1 = new Group(Discipline.CHEMISTRY);
-//        Group group2 = new Group(Discipline.MATHEMATICS);
-//        Group group3 = new Group(Discipline.PHYSICS);
         class Mathematics extends Discipline {
             Mathematics(Double highestScore) {
                 super(highestScore);
@@ -54,4 +48,5 @@ public class Main {
         System.out.println(student1);
 
     }
+
 }

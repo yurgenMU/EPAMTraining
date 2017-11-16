@@ -12,13 +12,11 @@ public class Task3 {
         double b = Double.parseDouble(sc.nextLine());
         System.out.println("Choose h :");
         double h = Double.parseDouble(sc.nextLine());
-
-
         functionT(a, b, h);
     }
 
     private static void functionT(double a, double b, double h) {
-        double f = 0;
+        double f;
         while (a <= b) {
             a += h;
             f = Math.tan(2 * a) - 3;

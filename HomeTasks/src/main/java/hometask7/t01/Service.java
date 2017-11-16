@@ -9,7 +9,7 @@ public class Service {
 
 
     static void transaction(Bank bank, List<Transfer> transferList) {
-        ExecutorService executor = Executors.newScheduledThreadPool(transferList.size());
+        ExecutorService executor = Executors.newFixedThreadPool(transferList.size());
         for (Transfer t : transferList) {
             Runnable r = () -> {
                 bank.transfer(t);

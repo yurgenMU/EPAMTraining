@@ -9,8 +9,8 @@ public class NuclearSubmarine {
         Ballistic_missile
     }
 
-    private NuclearSubmarineReactor reactor;
-    private SubmarineClass submarineClass;
+    private final NuclearSubmarineReactor reactor;
+    private final SubmarineClass submarineClass;
 
     public NuclearSubmarine(NuclearSubmarineReactor reactor, SubmarineClass submarineClass) {
         this.reactor = reactor;

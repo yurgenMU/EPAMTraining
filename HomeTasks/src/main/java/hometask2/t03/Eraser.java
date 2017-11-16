@@ -1,13 +1,13 @@
 package hometask2.t03;
 
-public class Eraser extends Stationery implements Erasable {
+public class Eraser extends Stationery {
 
 
-    public Eraser(double price) {
-        super(price);
+    public Eraser(Color color, double price) {
+        super(color, price);
     }
 
-    @Override
+
     public void erase(char[] c) {
 
     }
