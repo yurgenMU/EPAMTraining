@@ -16,7 +16,7 @@ public class ConnectionPool {
     private BlockingQueue<Connection> poolUsed = new LinkedBlockingQueue<>();
 
 
-    private String path = "Hometasks/src/main/resources/hometask8/db.properties";
+    private String path = "Hometasks/src/main/resources/hometask8/t01/db.properties";
     private String driver;
     private String url;
     private String user;
@@ -27,7 +27,7 @@ public class ConnectionPool {
         Properties properties = ConnectionProperties.getProperties(path);
         this.driver = properties.getProperty("db.driver");
         this.url = properties.getProperty("db.url");
-        this.user = properties.getProperty("db.user");
+        this.user = properties.getProperty("db.username");
         this.password = properties.getProperty("db.password");
         this.minPoolSize = 5;
         initConnectionPool();

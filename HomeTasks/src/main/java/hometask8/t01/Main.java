@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         JDBCOperations operations = new JDBCOperations();
-        operations.setInitPath("Hometasks/src/main/resources/hometask8/init.sql");
-        operations.setPropertiesPath("Hometasks/src/main/resources/hometask8/db.properties");
+        operations.setInitPath("Hometasks/src/main/resources/hometask8/t01/init.sql");
+        operations.setPropertiesPath("Hometasks/src/main/resources/hometask8/t01/db.properties");
         try {
             operations.init();
             operations.select("SELECT * FROM PLAYERS;");

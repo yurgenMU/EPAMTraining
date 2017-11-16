@@ -1,0 +1,43 @@
+CREATE DATABASE IF NOT EXISTS epamdb;
+
+USE EPAMdb;
+
+CREATE TABLE IF NOT EXISTS epamdb.booksInfo (
+  `id`       INT         NOT NULL AUTO_INCREMENT
+  COMMENT '',
+  `NAME`     VARCHAR(45) NOT NULL
+  COMMENT '',
+  `AUTHORID` INT         NOT NULL
+  COMMENT '',
+  PRIMARY KEY (`id`)
+    COMMENT ''
+);
+
+
+CREATE TABLE IF NOT EXISTS epamdb.AUTHORS (
+  `id`        INT         NOT NULL AUTO_INCREMENT
+  COMMENT '',
+  `FIRSTNAME` VARCHAR(45)
+  COMMENT '',
+  `LASTNAME`  VARCHAR(45) NOT NULL
+  COMMENT '',
+  PRIMARY KEY (`id`)
+    COMMENT ''
+);
+
+CREATE TABLE IF NOT EXISTS epamdb.BOOKS (
+  `ID`   INT NOT NULL
+  COMMENT '',
+  `TEXT` TEXT(2000000)
+  COMMENT '',
+  PRIMARY KEY (`id`)
+    COMMENT ''
+);
+
+SELECT
+  epamdb.BOOKSINFO.NAME,
+  epamdb.AUTHORS.FIRSTNAME,
+  epamdb.AUTHORS.LASTNAME
+FROM epamdb.BOOKSINFO
+  JOIN epamdb.AUTHORS ON epamdb.AUTHORS.ID = epamdb.BOOKSINFO.AUTHORID
+WHERE epamdb.booksinfo.NAME = 'Вишнёвый сад';
